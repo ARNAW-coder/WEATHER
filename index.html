@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App UI</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #949699;;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: linear-gradient(to bottom, #1e3553, #0f1c2e);
+            border-radius: 20px;
+            width: 350px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .current-weather {
+            display: flex;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #2a4060;
+        }
+        .current-weather h1 {
+            font-size: 80px;
+            margin: 0;
+            color: #ffffff;
+        }
+        .current-weather p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #a0b0c0;
+        }
+        .current-weather .icon {
+            
+            margin-left: 43%;
+            margin-top: -98px;
+        }
+        .forecast-section {
+            margin-top: 20px;
+        }
+        .forecast-section h2 {
+            font-size: 18px;
+            margin: 0 0 10px 0;
+            color: #a0b0c0;
+        }
+        .hourly-forecast, .daily-forecast {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .hourly-forecast div, .daily-forecast div {
+            text-align: center;
+            flex: 1;
+        }
+        .hourly-forecast .icon, .daily-forecast .icon {
+            width: 30px;
+            height: 30px;
+            background-color: #ffd700;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+        .daily-forecast .icon {
+            background-color: transparent;
+        }
+        .daily-forecast .rain-icon {
+            background: linear-gradient(to bottom, #87ceeb, #4682b4);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            position: relative;
+        }
+        .daily-forecast .rain-icon::after {
+            content: '';
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: #ffffff;
+            border-radius: 50%;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 -5px 0 #ffffff, 5px -5px 0 #ffffff, -5px -5px 0 #ffffff;
+        }
+        .daily-forecast .percentage {
+            font-size: 14px;
+            color: #87ceeb;
+            margin-top: 5px;
+        }
+        .daily-forecast .temp {
+            font-size: 16px;
+            color: #ffffff;
+        }
+        .controls-section {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .select-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        select {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #2a4060;
+            background-color: #1e3553;
+            color: #ffffff;
+            width: 150px;
+        }
+        button {
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #ffd700;
+            color: #1a2a44;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e6c200;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .cards-section {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.card {
+    background-color: #1e3553;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card h3 {
+    font-size: 16px;
+    margin: 0 0 10px 0;
+    color: #a0b0c0;
+}
+
+.card p {
+    font-size: 18px;
+    margin: 0;
+    color: #ffffff;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls-section">
+            <div class="select-group">
+                <select name="states" id="states">
+        <option value="states">select states</option>
+    </select>
+     <button class="btn_states">Go</button>
+            </div>
+            <div class="select-group">
+                          <select name="cities" id="cities">
+            <option value="city">select city</option>
+          </select>
+         <button class="btn_cities">Go</button>
+            </div>
+            <div class="button-group">
+                <button class="reset">Reset</button>
+                <button class="submit">submit</button>
+            </div>
+            
+        </div>
+        <div class="current-weather">
+            <h1>0°</h1>
+            <div class="icon"></div> <!-- Placeholder for sun icon -->
+        </div>
+        
+        <div class="forecast-section">
+<div class="cards-section">
+    <div class="card humidity">
+        <h3>Humidity</h3>
+        <p></p>
+    </div>
+    <div class="card windspeed">
+        <h3>Wind Speed</h3>
+        <p></p>
+    </div>
+    <div class="card winddirection">
+        <h3>Wind Direction</h3>
+        <p></p>
+    </div>
+    <div class="card condition">
+        <h3>Condition</h3>
+        <p></p>
+    </div>
+    <div class="card uvindex">
+        <h3>UV Index</h3>
+        <p></p>
+    </div>
+    <div class="card feelslike">
+        <h3>Feels Like</h3>
+        <p></p>
+    </div>
+</div>
+        </div>
+        
+    </div>
+    <div id="spinner" class="spinner-overlay hidden">
+    <div class="spinner-circle"></div>
+        </div>
+    <script src="script.js"></script>
+</body>
+</html>

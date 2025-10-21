@@ -1,0 +1,30 @@
+.spinner-overlay {
+    position: fixed; /* Or absolute if you want it relative to .container */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* Ensures it appears on top */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner-circle {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #a0b0c0; /* Light border color matching your theme */
+    border-top: 5px solid #ffd700; /* Yellow top for rotation effect */
+    border-radius: 50%;
+    animation: spin 1s linear infinite; /* Animation: spins forever */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hidden {
+    display: none;
+}   
+
+
